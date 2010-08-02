@@ -30,9 +30,9 @@ import java.security.PrivilegedAction;
 import java.util.ArrayList;
 import java.util.HashSet;
 
+import org.fusesource.hawtbuf.Buffer;
 import org.fusesource.hawtdb.api.IOPagingException;
 import org.fusesource.hawtdb.util.IOHelper;
-import org.fusesource.hawtbuf.Buffer;
 
 /**
  * Provides Memory Mapped access to a file.  It manages pooling the 
@@ -220,7 +220,7 @@ final public class MemoryMappedFile {
             } catch (IllegalArgumentException e) {
                 throw new IOPagingException(e);
             } catch (IOException e) {
-                throw new IOPagingException("position: " + position + " bufferSize: " + bufferSize, e);
+                throw new IOPagingException("position: " + position + "@" + index + " bufferSize: " + bufferSize, e);
             }
 			buffers.set(index, buffer);
 		}
