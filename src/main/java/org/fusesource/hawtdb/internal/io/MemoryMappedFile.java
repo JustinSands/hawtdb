@@ -213,13 +213,14 @@ final public class MemoryMappedFile {
 		}
 		MappedByteBuffer buffer = buffers.get(index);
 		if (buffer == null) {
+			long position = -1;
 			try {
-                long position = ((long)index)*bufferSize;
+                position = ((long)index)*bufferSize;
                 buffer = channel.map(MapMode.READ_WRITE, position, bufferSize);
             } catch (IllegalArgumentException e) {
                 throw new IOPagingException(e);
             } catch (IOException e) {
-                throw new IOPagingException(e);
+                throw new IOPagingException("position: " + position + " bufferSize: " + bufferSize, e);
             }
 			buffers.set(index, buffer);
 		}
