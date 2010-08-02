@@ -50,6 +50,10 @@ public class MemoryMappedFileFactory {
             memoryMappedFile=null;
         }
     }
+    
+    public void forceClose() throws IOException {
+    	memoryMappedFile.forceClose();
+    }
 
     public MemoryMappedFile getMemoryMappedFile() throws IOException {
         return memoryMappedFile;

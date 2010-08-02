@@ -74,6 +74,10 @@ public class TxPageFileFactory {
         pageFileFactory.close();
     }
 
+    public void forceClose() throws Exception {
+    	pageFileFactory.close();
+    }
+    
     public boolean isSync() {
         return sync;
     }
